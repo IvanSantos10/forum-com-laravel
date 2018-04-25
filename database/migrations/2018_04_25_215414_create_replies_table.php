@@ -15,6 +15,12 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('body');
+            $table->integer('thread_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('thread_id')->references('id')->on('threads');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +32,7 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('replies');
     }
 }
