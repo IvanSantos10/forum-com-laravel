@@ -8,4 +8,8 @@
             Carregando....
         </exemple>
     </div>
-@ends ection
+@endsection
+
+@section('scripts')
+    <script src="/js/threads.js"></script>
+@endsection

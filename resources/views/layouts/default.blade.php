@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,11 +9,20 @@
     <title>Document</title>
 </head>
 <body>
-    @yield('content')
 
-    <script src="/js/manifest.js"></script>
-    <script src="/js/vendor.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/threads.js"></script>
+    <header>
+        @include('layouts.default.header')
+    </header>
+    <main>
+        <section>
+            @yield('content')
+        </section>
+    </main>
+
+    @include('layouts.default.footer')
+
+    @component('layouts.default.body_scripts')
+        @yield('scripts')
+    @endcomponent
 </body>
 </html>
