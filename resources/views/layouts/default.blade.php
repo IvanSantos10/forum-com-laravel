@@ -16,7 +16,7 @@
         @include('layouts.default.header')
     </header>
     <main>
-        <section>
+        <section id="app">
             @yield('content')
         </section>
     </main>

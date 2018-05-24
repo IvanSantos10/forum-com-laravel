@@ -3,10 +3,11 @@
 
 @section('content')
 
-    <div id="app">
-        <exemple>
+    <div class="container">
+        <h3>{{ __('Most rescent threads') }}</h3>
+        <threads>
             Carregando....
-        </exemple>
+        </threads>
     </div>
 @endsection
 
