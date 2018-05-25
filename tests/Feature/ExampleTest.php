@@ -34,4 +34,16 @@ class ExampleTest extends TestCase
         $response = $this->get('/threads/a');
         $response->assertStatus(404);
     }
+
+    public function testTheadVisualization()
+    {
+        $this->seed('ThreadsTableSeeder');
+
+        $thread = \App\Thread::find(1);
+
+        $response = $this->get('/threads/1');
+        $response->assertSee($thread->title);
+        $response->assertSee($thread->body);
+
+    }
 }
