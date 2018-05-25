@@ -12,8 +12,11 @@
             </div>
         </div>
 
+        <replies></replies>
+
     </div>
 @endsection
 
 @section('scripts')
+    <script src="/js/replies.js"></script>
 @endsection
