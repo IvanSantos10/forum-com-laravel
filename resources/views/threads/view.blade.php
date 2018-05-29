@@ -12,7 +12,12 @@
             </div>
         </div>
 
-        <replies>
+        <replies
+                replied="{{__('Replied')}}"
+                reply="{{__('Reply')}}"
+                your-answer="{{__('Your answear')}}"
+                send="{{__('Send')}}"
+        >
             @include('layouts.default.preloader')
         </replies>
 

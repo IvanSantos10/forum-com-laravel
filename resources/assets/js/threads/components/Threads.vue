@@ -1,13 +1,13 @@
 <template>
     <div class="card">
         <div class="card-content">
-            <span class="card-title">Threads</span>
+            <span class="card-title">{{ title }}</span>
             <table>
                 <thead>
                 <tr>
                     <td>#</td>
-                    <td>Thread</td>
-                    <td>Replay</td>
+                    <td>{{ threads }}</td>
+                    <td>{{ replies }}</td>
                     <td></td>
                 </tr>
                 </thead>
@@ -15,9 +15,9 @@
                 <tr>
                     <td>1</td>
                     <td>Teste</td>
-                    <td></td>
+                    <td>3</td>
                     <td>
-                        <a href="/threads/1">open</a>
+                        <a href="/threads/1">{{ open }}</a>
                     </td>
                 </tr>
                 </tbody>
@@ -28,5 +28,12 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        props: [
+            'title',
+            'threads',
+            'replies',
+            'open',
+        ]
+    }
 </script>

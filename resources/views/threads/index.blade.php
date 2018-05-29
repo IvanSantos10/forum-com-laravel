@@ -5,7 +5,12 @@
 
     <div class="container">
         <h3>{{ __('Most rescent threads') }}</h3>
-        <threads>
+        <threads
+            title="{{ __('Threads') }}"
+            threads="{{ __('Threads') }}"
+            replies="{{ __('Replies') }}"
+            open="{{ __('Open') }}"
+        >
             @include('layouts.default.preloader')
         </threads>
     </div>
