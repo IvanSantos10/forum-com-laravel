@@ -18,4 +18,10 @@ class LocaleTest extends TestCase
         $response = $this->get('/locale/en');
         $response->assertStatus(302);
     }
+
+    public function testTranslation()
+    {
+        $response = $this->withSession(['locale'=>'pt-br'])->get('/');
+        $response->assertSee('Tópicos mais recentes');
+    }
 }
