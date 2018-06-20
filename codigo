@@ -1,0 +1,8 @@
+
+git flow init
+
+iniciar uma feature
+git flow feature start threads
+
+finalizar uma feature
+git flow feature finish threads
