@@ -12,11 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
     public function testActionIndexOnController()
     {
         $user = factory(User::class)->create();
@@ -30,5 +26,20 @@ class ThreadTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([$threads->toArray()['data']]);
+    }
+
+    public function testActionStoreOnController()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->json('POST', '/threads', [
+                'title' => 'Meu primeiro tópico',
+                'body'  => 'Este é um exemplo de tópico'
+            ]);
+
+        $response->assertStatus(200)
+            ->assertJsonFragment(['created' => 'success']);
     }
 }
