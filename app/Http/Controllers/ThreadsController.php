@@ -14,18 +14,11 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        //
+        $threads = Thread::orderBy('updated_at', 'desc')->paginate();
+
+        return response()->json($threads);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,29 +28,13 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $thread = new Thread;
+        $thread->title = $request->input('title');
+        $thread->body = $request->input('body');
+        $thread->user_id = \Auth::user()->id;
+        $thread->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Thread $thread)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Thread $thread)
-    {
-        //
+        return response()->json(['created' => 'success', 'data' => $thread]);
     }
 
     /**

@@ -12,12 +12,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Teste</td>
-                    <td>3</td>
+                <tr v-for="thread in threads_response.data">
+                    <td>{{ thread.id}}</td>
+                    <td>{{ thread.title}}</td>
+                    <td>0</td>
                     <td>
-                        <a href="/threads/1">{{ open }}</a>
+                        <a :href="'/threads/' + thread.id">{{ open }}</a>
                     </td>
                 </tr>
                 </tbody>
@@ -34,6 +34,16 @@
             'threads',
             'replies',
             'open',
-        ]
+        ],
+        data() {
+            return {
+                threads_response: []
+            }
+        },
+        mounted() {
+            window.axios.get('/threads').then((response) => {
+                this.threads_response = response.data
+            })
+        }
     }
 </script>
