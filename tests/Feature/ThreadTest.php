@@ -39,7 +39,10 @@ class ThreadTest extends TestCase
                 'body'  => 'Este é um exemplo de tópico'
             ]);
 
+        $thread = Thread::find(1);
+
         $response->assertStatus(200)
-            ->assertJsonFragment(['created' => 'success']);
+            ->assertJsonFragment(['created' => 'success'])
+            ->assertJsonFragment([$thread->toArray()]);
     }
 }

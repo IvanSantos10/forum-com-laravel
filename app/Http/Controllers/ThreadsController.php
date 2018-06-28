@@ -28,7 +28,13 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $thread = new Thread;
+        $thread->title = $request->input('title');
+        $thread->body = $request->input('body');
+        $thread->user_id = \Auth::user()->id;
+        $thread->save();
+
+        return response()->json(['created' => 'success', 'data' => $thread]);
     }
 
     /**
